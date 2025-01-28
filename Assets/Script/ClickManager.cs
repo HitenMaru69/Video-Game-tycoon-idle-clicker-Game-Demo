@@ -3,20 +3,20 @@ using UnityEngine.EventSystems;
 
 public class ClickManager : MonoBehaviour
 {
+    [SerializeField] MoneyManager moneyManager;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (!IsClickOnButton())
-            {
-                Debug.Log("yes Click");
+            if (!IsCLickOnUI()) {
+
+                moneyManager.MoneyIncressEvent();
             }
         }
     }
 
-
-    bool IsClickOnButton()
+    bool IsCLickOnUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
     }
