@@ -14,7 +14,7 @@ public class MoneyManager : MonoBehaviour
     {
         totalMoney_Txt.text = totalMoney.ToString();
         MoneyIncreaseOnClick += OnMoneyIncress;
-
+        
     }
 
     private void OnMoneyIncress(object sender, EventArgs e)
