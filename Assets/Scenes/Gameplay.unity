@@ -362,7 +362,7 @@ MonoBehaviour:
   m_MultiSelect: 0
   m_Options:
     m_Options:
-    - m_Text: Android
+    - m_Text: Mobile
       m_Image: {fileID: 0}
       m_Color: {r: 0.93962264, g: 0.93962264, b: 0.93962264, a: 1}
     - m_Text: PC
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Android
+  m_text: Mobile
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3449,6 +3449,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCategory: {fileID: 2105025532}
   nextPanel: {fileID: 0}
+  cardgameTime: 3
+  hyperCasualgameTime: 4
+  endlessgameTime: 5
+  horrogameTime: 7
+  actiongameTime: 10
 --- !u!1 &918534823
 GameObject:
   m_ObjectHideFlags: 0
@@ -6762,6 +6767,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameEngineName: {fileID: 985573754}
   nextPanel: {fileID: 1729528622}
+  unityTime: 1
+  unrealTime: 2
+  goDotTime: 1
 --- !u!1 &1636889071
 GameObject:
   m_ObjectHideFlags: 0
@@ -7354,6 +7362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePlatform: {fileID: 13707799}
   nextPanel: {fileID: 896011326}
+  mobileTime: 2
+  pcTime: 3
+  playStationTime: 4
 --- !u!1 &1754391194
 GameObject:
   m_ObjectHideFlags: 0
