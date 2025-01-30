@@ -28,12 +28,8 @@ public class GameCategoryPanel : MonoBehaviour
         CreateGameData.gameCategory = gameCategory.options[gameCategory.value].text;
         gameCategoryEnum = (GameCategory)gameCategory.value;
         AddTimeAccrodingToGameCatagory();
-        //nextPanel.SetActive(true);
-        //this.gameObject.SetActive(false);
-
-        Debug.Log("Total game time " + CreateGameData.gameCreateTime);
-
-
+        nextPanel.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     void AddTimeAccrodingToGameCatagory()
