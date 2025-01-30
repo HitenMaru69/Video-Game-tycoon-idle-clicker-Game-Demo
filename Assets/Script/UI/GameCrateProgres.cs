@@ -1,36 +1,69 @@
+using NUnit.Framework;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+
 
 public class GameCrateProgres : MonoBehaviour
 {
-    [SerializeField] UnityEngine.UI.Slider progressImage;
-    
+    [SerializeField] Slider progressImage;
+    [SerializeField] TextMeshProUGUI randomTxt;
+
+
+    List<String> randomTextList = new()
+    {
+        "Creating Blueprint",
+        "Creating Art",
+        "Writing Code",
+        "Game Balances and Fixes",
+        "Fixing Bugs",
+        "Testing Quality Assurance",
+        "Adding Music and Sound ",
+        "Final Improvement",
+        "Ready To Launch"
+    };
 
     private void Start()
     {
         progressImage.value = 0;
+        randomTxt.text = randomTextList[0];
         StartCoroutine(FillSliderOverTime());
     }
 
     IEnumerator FillSliderOverTime()
     {
         float currentTime = 0f;
-        while (currentTime < CreateGameData.gameCreateTime)
+        float totalTime = CreateGameData.gameCreateTime;
+        int totalIndex = randomTextList.Count;
+        float timePerStep = totalTime / totalIndex;
+        int currentStep = 0;
+
+        while (currentTime < totalTime)
         {
             currentTime += Time.deltaTime;
-            progressImage.value = Mathf.Lerp(0, 1, currentTime / CreateGameData.gameCreateTime);
+            progressImage.value = Mathf.Lerp(0, 1, currentTime / totalTime);
+
+    
+            int newStep = Mathf.FloorToInt(currentTime / timePerStep);
+            if (newStep != currentStep && newStep < totalIndex)
+            {
+                currentStep = newStep;
+                randomTxt.text = randomTextList[currentStep];
+            }
+
             yield return null;
         }
-        
+
         progressImage.value = 1;
+        randomTxt.text = randomTextList[^1];
         Debug.Log("Game Progress is Complete");
 
-        // add Functionality afte game Progress complate
         
     }
 
-    
+
 
 }
