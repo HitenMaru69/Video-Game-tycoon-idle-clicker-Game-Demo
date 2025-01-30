@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class GameCrateProgres : MonoBehaviour
 {
     [SerializeField] Slider progressImage;
     [SerializeField] TextMeshProUGUI randomTxt;
+    [SerializeField] GameObject finishButton;
 
 
     List<String> randomTextList = new()
@@ -26,11 +28,14 @@ public class GameCrateProgres : MonoBehaviour
         "Ready To Launch"
     };
 
-    private void Start()
+    void OnEnable()
     {
+        progressImage.gameObject.SetActive(true);
+        finishButton.SetActive(false);
         progressImage.value = 0;
         randomTxt.text = randomTextList[0];
         StartCoroutine(FillSliderOverTime());
+
     }
 
     IEnumerator FillSliderOverTime()
@@ -38,7 +43,7 @@ public class GameCrateProgres : MonoBehaviour
         float currentTime = 0f;
         float totalTime = CreateGameData.gameCreateTime;
         int totalIndex = randomTextList.Count;
-        float timePerStep = totalTime / totalIndex;
+        float nextIndexTime = totalTime / totalIndex;
         int currentStep = 0;
 
         while (currentTime < totalTime)
@@ -47,7 +52,7 @@ public class GameCrateProgres : MonoBehaviour
             progressImage.value = Mathf.Lerp(0, 1, currentTime / totalTime);
 
     
-            int newStep = Mathf.FloorToInt(currentTime / timePerStep);
+            int newStep = Mathf.FloorToInt(currentTime / nextIndexTime);
             if (newStep != currentStep && newStep < totalIndex)
             {
                 currentStep = newStep;
@@ -59,11 +64,20 @@ public class GameCrateProgres : MonoBehaviour
 
         progressImage.value = 1;
         randomTxt.text = randomTextList[^1];
-        Debug.Log("Game Progress is Complete");
+        progressImage.gameObject.SetActive(false);
+        finishButton.SetActive(true);
 
-        
     }
 
+    public void ClickOnFinishButton()
+    {
+        CreateGameData.gameCreateTime = 0;
+        this.gameObject.SetActive(false);
+    }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 
 }
