@@ -1,19 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] GameObject gameNamePanel;
+    public static UIManager Instance { get; private set; }
 
-    private void Start()
+    [SerializeField] private PanelManager _panelManager;
+
+    private void Awake()
     {
-        gameNamePanel.SetActive(false);
-
+        Instance = this;
     }
 
-    public void CreateGameBu()
+    public void UpgradeButtonClick()
     {
-        gameNamePanel.SetActive(true);
+        _panelManager.ShowPanel(PanelName.UpgradePanel);
     }
 
-
+    public void CloseUpgradePanelButtonClick()
+    {
+        _panelManager.HidePanel(PanelName.UpgradePanel);
+    }
 }
