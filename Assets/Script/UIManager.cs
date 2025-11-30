@@ -15,10 +15,22 @@ public class UIManager : MonoBehaviour
     public void UpgradeButtonClick()
     {
         _panelManager.ShowPanel(PanelName.UpgradePanel);
+        _panelManager.ShowPanel(PanelName.GameListPanel);
+    }
+
+    public void NewGameButtonClick()
+    {
+        _panelManager.ShowPanel(PanelName.GameListPanel);
+    }
+
+    public void HireEmployeButtonClick()
+    {
+        _panelManager.HidePanel(PanelName.GameListPanel);
     }
 
     public void CloseUpgradePanelButtonClick()
     {
+        _panelManager.HidePanel(PanelName.GameListPanel);
         _panelManager.HidePanel(PanelName.UpgradePanel);
     }
 }

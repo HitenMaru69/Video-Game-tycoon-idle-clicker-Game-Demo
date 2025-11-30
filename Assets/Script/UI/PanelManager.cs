@@ -4,6 +4,7 @@ using UnityEngine;
 public enum PanelName
 {
     UpgradePanel,
+    GameListPanel,
 
 }
 
