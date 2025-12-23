@@ -17,7 +17,9 @@ public class GameListPrefeb : MonoBehaviour
         _gamePriceText.text = "$" + gameprize.ToString();
         _gamePrice = gameprize;
     }
-
+    
+    
+    
     public void BuyButtonClick()
     {
         float currentMoney = MoneyManager.Instance.GetCurrentMoney();
@@ -25,6 +27,7 @@ public class GameListPrefeb : MonoBehaviour
         if(currentMoney >= _gamePrice)
         {
             Debug.Log("Game Bought Successfully");
+            EventManager.Instance.DeductMoney?.Invoke(new DeductMoneyEventArgs(_gamePrice));
         }
         else
         {

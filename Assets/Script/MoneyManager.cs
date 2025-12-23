@@ -21,18 +21,31 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         totalMoney_Txt.text = "$" + totalMoney.ToString();
-        MoneyIncreaseOnClick += OnMoneyIncress;
-        
+        SubscribeEvent();
+
     }
+
 
     private void OnDisable()
     {
-        MoneyIncreaseOnClick -= OnMoneyIncress;
+        UnsubscribeEvent();
     }
 
    public int GetCurrentMoney()
     {
         return totalMoney;
+    }
+
+    private void SubscribeEvent()
+    {
+        MoneyIncreaseOnClick += OnMoneyIncress;
+        EventManager.Instance.DeductMoney += OnDeductMoney;
+    }
+
+    private void UnsubscribeEvent()
+    {
+        MoneyIncreaseOnClick -= OnMoneyIncress;
+        EventManager.Instance.DeductMoney -= OnDeductMoney;
     }
 
     private void OnMoneyIncress(object sender, EventArgs e)
@@ -41,9 +54,17 @@ public class MoneyManager : MonoBehaviour
         totalMoney_Txt.text = "$" + totalMoney.ToString();
     }
 
+    private void OnDeductMoney(DeductMoneyEventArgs args)
+    {
+        totalMoney -= (int)args.Amount;
+        totalMoney_Txt.text = "$" + totalMoney.ToString();
+    }
+
+
     public void MoneyIncressEvent()
     {
         MoneyIncreaseOnClick?.Invoke(this, EventArgs.Empty);
     }
+
 
 }
