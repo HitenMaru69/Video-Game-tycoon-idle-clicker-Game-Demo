@@ -25,6 +25,7 @@ public class GamePlatformPanel : MonoBehaviour
         gamePlatformEnum = (GamePlatform)gamePlatform.value;
         AddTimeAccrodingToGamePlatform();
         nextPanel.SetActive(true);
+        gamePlatform.value = 0;
         this.gameObject.SetActive(false);
     }
 

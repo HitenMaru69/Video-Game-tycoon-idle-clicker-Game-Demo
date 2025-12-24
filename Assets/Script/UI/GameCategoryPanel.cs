@@ -29,6 +29,7 @@ public class GameCategoryPanel : MonoBehaviour
         gameCategoryEnum = (GameCategory)gameCategory.value;
         AddTimeAccrodingToGameCatagory();
         nextPanel.SetActive(true);
+        gameCategory.value = 0;
         this.gameObject.SetActive(false);
     }
 

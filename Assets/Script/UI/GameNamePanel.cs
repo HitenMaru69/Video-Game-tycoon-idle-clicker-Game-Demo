@@ -13,7 +13,9 @@ public class GameNamePanel : MonoBehaviour
     {
         CreateGameData.gameName = gameName.text;
         nextPanel.SetActive(true);
+        gameName.text = "";
         this.gameObject.SetActive(false);
+
 
        
     }

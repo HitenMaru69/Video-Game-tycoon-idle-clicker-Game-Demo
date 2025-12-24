@@ -25,6 +25,7 @@ public class GameEnginePanel : MonoBehaviour
         gameEngineEnum = (GameEngine)gameEngineName.value;
         AddTimeAccrodingToGameEngine();
         nextPanel.SetActive(true);
+        gameEngineName.value = 0;
         this.gameObject.SetActive(false);
     }
 

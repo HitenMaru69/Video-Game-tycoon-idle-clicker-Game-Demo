@@ -5,6 +5,12 @@ public enum PanelName
 {
     UpgradePanel,
     GameListPanel,
+    CreateGamePanel,
+    GameNamePanel,
+    GameEnginePanel,
+    GamePlateFormPanel,
+    GameCategoryPanel,
+    CreateGameProgressPanel,
 
 }
 
@@ -18,9 +24,15 @@ public class GamePanelData
 
 public class PanelManager : MonoBehaviour
 {
+    public static PanelManager Instance {get; private set;}
  
     [SerializeField] private List<GamePanelData> _gamePanels;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+    
     public void ShowPanel(PanelName gamePanelName)
     {
         _gamePanels.Find(panel => panel.panelName == gamePanelName).panelObject.SetActive(true);

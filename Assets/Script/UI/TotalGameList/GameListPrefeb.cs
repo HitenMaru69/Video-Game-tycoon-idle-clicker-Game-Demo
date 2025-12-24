@@ -28,6 +28,10 @@ public class GameListPrefeb : MonoBehaviour
         {
             Debug.Log("Game Bought Successfully");
             EventManager.Instance.DeductMoney?.Invoke(new DeductMoneyEventArgs(_gamePrice));
+            PanelManager.Instance.ShowPanel(PanelName.CreateGamePanel);
+            PanelManager.Instance.ShowPanel(PanelName.GameNamePanel);
+            PanelManager.Instance.HidePanel(PanelName.UpgradePanel);
+            PanelManager.Instance.HidePanel(PanelName.GameListPanel);
         }
         else
         {

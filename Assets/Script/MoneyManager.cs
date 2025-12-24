@@ -20,7 +20,12 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
+        
+        // For Test
+        totalMoney = 100;
         totalMoney_Txt.text = "$" + totalMoney.ToString();
+        
+        
         SubscribeEvent();
 
     }

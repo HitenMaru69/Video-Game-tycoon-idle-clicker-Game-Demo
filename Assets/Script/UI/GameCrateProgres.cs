@@ -71,6 +71,7 @@ public class GameCrateProgres : MonoBehaviour
     {
         CreateGameData.gameCreateTime = 0;
         this.gameObject.SetActive(false);
+        PanelManager.Instance.HidePanel(PanelName.CreateGamePanel);
     }
 
     private void OnDisable()
