@@ -11,6 +11,7 @@ public enum PanelName
     GamePlateFormPanel,
     GameCategoryPanel,
     CreateGameProgressPanel,
+    HireEmployListPanel,
 
 }
 

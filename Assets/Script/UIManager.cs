@@ -16,15 +16,18 @@ public class UIManager : MonoBehaviour
     {
         _panelManager.ShowPanel(PanelName.UpgradePanel);
         _panelManager.ShowPanel(PanelName.GameListPanel);
+        _panelManager.HidePanel(PanelName.HireEmployListPanel);
     }
 
     public void NewGameButtonClick()
     {
         _panelManager.ShowPanel(PanelName.GameListPanel);
+        _panelManager.HidePanel(PanelName.HireEmployListPanel);
     }
 
     public void HireEmployeButtonClick()
     {
+        _panelManager.ShowPanel(PanelName.HireEmployListPanel);
         _panelManager.HidePanel(PanelName.GameListPanel);
     }
 
